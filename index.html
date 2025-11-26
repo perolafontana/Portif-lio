@@ -1,184 +1,576 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio Mágico</title>
-  <!-- Fonte temática -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Portfólio • PEROLA</title>
+
+  <!-- Tipografia -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'MedievalSharp', cursive;
-      background: radial-gradient(circle at top, #0a0a0a, #1a1a1a 80%);
-      color: #f5f5dc;
-      overflow-x: hidden;
+    :root{
+      --bg:#0b1020;
+      --bg-soft:#0f172a;
+      --card:#111936;
+      --text:#e5e7eb;
+      --muted:#a1a7b5;
+      --brand:#7c3aed;
+      --brand-2:#22d3ee;
+      --accent:#f59e0b;
+      --ok:#10b981;
+      --danger:#ef4444;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 14px;
+      --radius-sm: 10px;
+      --grid: minmax(260px,1fr);
     }
 
-    header {
-      text-align: center;
-      padding: 80px 20px;
-      background: url('https://i.ibb.co/4m7jz7z/hogwarts-night.jpg') center/cover no-repeat;
-      color: #ffd700;
-      text-shadow: 2px 2px 8px #000;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 80% -100%, rgba(124,58,237,.25), transparent 70%),
+        radial-gradient(900px 400px at 0% -60%, rgba(34,211,238,.18), transparent 70%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    header h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 3.5em;
-      margin: 0;
-      animation: glow 2s ease-in-out infinite alternate;
+    a{color:var(--brand-2); text-decoration:none}
+    a:hover{color:#67e8f9}
+
+    /* Navegação */
+    header{
+      position:fixed; top:0; left:0; right:0;
+      backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(15,23,42,.7), rgba(15,23,42,.3));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:50;
+    }
+    .nav{
+      max-width:1100px; margin:0 auto;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 22px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:.2px;
+    }
+    .logo{
+      width:36px; height:36px; border-radius:9px;
+      background:conic-gradient(from 180deg at 50% 50%, var(--brand), var(--brand-2), var(--accent), var(--brand));
+      box-shadow:0 6px 18px rgba(34,211,238,.35);
+      animation:spin 12s linear infinite;
+    }
+    @keyframes spin { to{ transform:rotate(360deg)} }
+
+    nav ul{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    nav a{
+      padding:8px 12px; border-radius:10px; color:var(--text);
+      transition:.2s ease;
+    }
+    nav a:hover{background:rgba(255,255,255,.06)}
+
+    .cta{
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg, var(--brand), #5b21b6);
+      color:white; padding:8px 14px; border-radius:12px; box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .cta:hover{filter:brightness(1.08)}
+
+    /* Hero */
+    .hero{
+      min-height:92vh;
+      display:grid; place-items:center;
+      padding:140px 22px 80px;
+      position:relative;
+      overflow:hidden;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ffd700; }
-      to { text-shadow: 0 0 25px #ffae00; }
+    .hero-grid{
+      width:100%; max-width:1100px;
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:40px;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      background: rgba(0,0,0,0.8);
-      padding: 20px;
-      border-bottom: 2px solid #ffd700;
+    .headline{
+      display:flex; flex-direction:column; gap:18px;
     }
 
-    nav a {
-      color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.2em;
-      transition: transform 0.3s, color 0.3s;
+    .kicker{
+      font-size:14px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted);
     }
 
-    nav a:hover {
-      color: #fff;
-      transform: scale(1.2);
+    h1{
+      font-family:"Playfair Display", serif;
+      font-weight:700; font-size:clamp(34px, 6vw, 64px); line-height:1.05;
+      margin:0;
+      background:linear-gradient(180deg, #fff 0%, #c7d2fe 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
 
-    section {
-      padding: 60px;
-      max-width: 1000px;
-      margin: auto;
-      text-align: center;
+    .type{
+      font-size:clamp(16px, 2.4vw, 20px); color:#cbd5e1;
+      border-left:3px solid var(--brand-2); padding-left:12px;
+      min-height:28px;
     }
 
-    section h2 {
-      font-family: 'Cinzel Decorative', serif;
-      color: #ffd700;
-      margin-bottom: 20px;
-      font-size: 2.5em;
+    .actions{display:flex; gap:14px; margin-top:12px; flex-wrap:wrap}
+
+    /* Hero Card */
+    .card{
+      background:linear-gradient(180deg, rgba(17,25,54,.7), rgba(17,25,54,.5));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-60% -20% auto auto;
+      width:220px; height:220px; border-radius:50%;
+      background:radial-gradient(circle at 50% 50%, rgba(34,211,238,.35), transparent 65%);
+      filter:blur(16px); transform:translateY(-20px);
+    }
+    .card h3{margin:8px 0 2px; font-size:18px}
+    .skills{display:flex; flex-wrap:wrap; gap:10px; margin-top:8px}
+    .chip{
+      padding:6px 10px; border:1px solid rgba(255,255,255,.14);
+      border-radius:999px; font-size:13px; color:#d1d5db;
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
     }
 
-    .hogwarts-letter {
-      background: #fdf5e6;
-      border: 3px solid #8b0000;
-      padding: 40px;
-      font-family: 'Times New Roman', serif;
-      box-shadow: 0 0 25px rgba(0,0,0,0.7);
-      transform: rotate(-1deg);
-      max-width: 700px;
-      margin: auto;
+    /* Seções */
+    section{
+      max-width:1100px; margin:0 auto; padding:80px 22px;
+    }
+    .section-title{
+      display:flex; align-items:center; gap:12px; margin-bottom:28px;
+    }
+    .section-title h2{
+      margin:0; font-size:32px; letter-spacing:.4px;
+      background:linear-gradient(180deg, #fff, #cbd5e1);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
+    .section-title .divider{
+      flex:1; height:1px; background:linear-gradient(90deg, rgba(124,58,237,.4), rgba(34,211,238,.3));
+      border:0;
     }
 
-    button {
-      background: #8b0000;
-      color: #fff;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1em;
-      cursor: pointer;
-      transition: background 0.3s;
+    /* Projetos */
+    .grid{
+      display:grid; grid-template-columns: repeat(3, var(--grid));
+      gap:18px;
+    }
+    .project{
+      position:relative; overflow:hidden; border-radius:var(--radius-sm);
+      background:linear-gradient(180deg, rgba(17,25,54,.8), rgba(17,25,54,.6));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .project:hover{ transform:translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,.45) }
+
+    .thumb{
+      aspect-ratio: 16/10;
+      background:
+        linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,211,238,.18)),
+        url('https://images.unsplash.com/photo-1529336953121-a95b3830f064?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+      filter:saturate(1.1) contrast(1.02);
+    }
+    .project .info{ padding:14px 14px 16px }
+    .project h3{ margin:0 0 4px; font-size:18px }
+    .project p{ margin:0; color:var(--muted); font-size:14px }
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .tag{
+      font-size:12px; color:#cbd5e1; padding:5px 8px; border-radius:999px;
+      background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1)
     }
 
-    button:hover {
-      background: #ffd700;
-      color: #000;
+    /* Sobre */
+    .about{
+      display:grid; grid-template-columns: 1fr 1fr; gap:28px;
+      align-items:start;
+    }
+    .timeline{ position:relative; padding-left:24px }
+    .timeline::before{
+      content:""; position:absolute; left:8px; top:6px; bottom:6px;
+      width:2px; background:linear-gradient(180deg, var(--brand), var(--brand-2));
+      border-radius:2px;
+    }
+    .item{ margin-bottom:16px }
+    .bullet{
+      width:14px; height:14px; border-radius:50%;
+      background:radial-gradient(circle at 40% 40%, #fff, var(--brand));
+      border:2px solid rgba(255,255,255,.25);
+      position:absolute; left:0; transform:translateX(2px);
+      box-shadow:0 0 0 4px rgba(124,58,237,.15);
+    }
+    .item h4{ margin:0 0 4px; font-size:16px }
+    .item p{ margin:0; color:var(--muted); font-size:14px }
+
+    /* Contato */
+    .contact{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:24px;
+    }
+    form{
+      background:linear-gradient(180deg, rgba(17,25,54,.8), rgba(17,25,54,.6));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);
+    }
+    label{ display:block; font-size:13px; color:#cbd5e1; margin-bottom:6px }
+    input, textarea{
+      width:100%; padding:12px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04); color:var(--text); font:inherit;
+      outline:none; transition:border-color .2s ease, background .2s ease;
+    }
+    input:focus, textarea:focus{ border-color:var(--brand-2); background:rgba(255,255,255,.06) }
+    textarea{ min-height:140px; resize:vertical }
+    .btn{
+      padding:10px 14px; border-radius:10px; background:linear-gradient(135deg, var(--brand-2), #0891b2);
+      color:#041322; font-weight:700; border:1px solid rgba(255,255,255,.18); cursor:pointer;
+    }
+    .btn:hover{ filter:brightness(1.05) }
+    .aside{
+      padding:18px; border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(17,25,54,.6), rgba(17,25,54,.5));
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .icons{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px }
+    .icon{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 10px;
+      border-radius:12px; color:#cbd5e1; border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05)
     }
 
-    /* Cursor mágico */
-    .magic-cursor {
-      position: fixed;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: #ffd700;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      animation: sparkle 0.6s infinite alternate;
+    /* Footer */
+    footer{
+      padding:40px 22px 60px; text-align:center; color:#93a0b8;
     }
 
-    @keyframes sparkle {
-      from { transform: scale(0.8); opacity: 0.6; }
-      to { transform: scale(1.3); opacity: 1; }
+    /* Responsivo */
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .about{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns: repeat(2, var(--grid)) }
     }
+    @media (max-width: 640px){
+      nav ul{ display:none }
+      .grid{ grid-template-columns: 1fr }
+    }
+
+    /* Revelação on-scroll */
+    .reveal{ opacity:0; transform:translateY(14px) scale(.98); filter:blur(2px) }
+    .reveal.show{ opacity:1; transform:none; filter:none; transition: all .6s cubic-bezier(.2,.7,.2,1) }
   </style>
 </head>
 <body>
+
+  <!-- Navegação -->
   <header>
-    <h1>Portfólio Mágico de PEROLA</h1>
-    <p>✨ “Juro solenemente que não pretendo fazer nada de bom.” ✨</p>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>PEROLA</span>
+      </div>
+      <nav aria-label="principal">
+        <ul>
+          <li><a href="#projetos">Projetos</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#habilidades">Habilidades</a></li>
+          <li><a href="#contato" class="cta">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <nav>
-    <a href="#grifinoria">Grifinória</a>
-    <a href="#corvinal">Corvinal</a>
-    <a href="#lufalufa">Lufa-Lufa</a>
-    <a href="#sonserina">Sonserina</a>
-    <a href="#contato">Coruja Mensageira</a>
-  </nav>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid reveal">
+      <div class="headline">
+        <div class="kicker">Portfólio profissional</div>
+        <h1>Sou a PEROLA — construo experiências que unem estética e resultado.</h1>
+        <div id="typewriter" class="type" aria-live="polite"></div>
 
-  <section id="sobre">
-    <div class="hogwarts-letter">
-      <h2>Carta de Hogwarts</h2>
-      <p>Prezada PEROLA,<br><br>
-      Temos o prazer de informar que você foi aceita na Escola de Magia e Bruxaria de Hogwarts. 
-      Este portfólio mágico mostrará seus feitiços (projetos), poções (habilidades) e aventuras (experiências).<br><br>
-      Atenciosamente,<br>
-      Minerva McGonagall</p>
+        <div class="actions">
+          <a href="#projetos" class="cta">Ver projetos</a>
+          <a href="#contato" class="icon" style="gap:6px;">
+            <span>Disponível para novos desafios</span>
+            <span style="width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 6px rgba(16,185,129,.18)"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card" aria-label="Resumo">
+        <h3>Resumo</h3>
+        <p style="color:#cbd5e1; margin:0">
+          Profissional focada em soluções criativas e impacto de negócio. Aqui você encontra uma seleção de projetos,
+          minha trajetória e formas de me contatar.
+        </p>
+        <div class="skills">
+          <span class="chip">UI/UX</span>
+          <span class="chip">Branding</span>
+          <span class="chip">Frontend</span>
+          <span class="chip">Motion</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="grifinoria">
-    <h2>Projetos Criativos</h2>
-    <p>✨ Trabalhos ousados e cheios de coragem.</p>
+  <!-- Projetos -->
+  <section id="projetos">
+    <div class="section-title">
+      <h2>Projetos em destaque</h2>
+      <hr class="divider" />
+    </div>
+
+    <div class="grid">
+      <article class="project reveal">
+        <div class="thumb" style="background-image:
+          linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,211,238,.18)),
+          url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1400&auto=format&fit=crop');">
+        </div>
+        <div class="info">
+          <h3>Plataforma SaaS</h3>
+          <p>Redesign de dashboard com foco em fluxo e métricas, aumentando retenção em campanhas.</p>
+          <div class="tags">
+            <span class="tag">UI Design</span>
+            <span class="tag">Product</span>
+            <span class="tag">A/B Test</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="thumb" style="background-image:
+          linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,211,238,.18)),
+          url('https://images.unsplash.com/photo-1551538827-9ee75a2a3fbc?q=80&w=1400&auto=format&fit=crop');">
+        </div>
+        <div class="info">
+          <h3>Identidade visual</h3>
+          <p>Sistema de marca para lançamento DTC com guidelines e kit social.</p>
+          <div class="tags">
+            <span class="tag">Branding</span>
+            <span class="tag">Motion</span>
+            <span class="tag">Social</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="thumb" style="background-image:
+          linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,211,238,.18)),
+          url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1400&auto=format&fit=crop');">
+        </div>
+        <div class="info">
+          <h3>Website institucional</h3>
+          <p>Site responsivo com microinterações e SEO técnico básico.</p>
+          <div class="tags">
+            <span class="tag">Frontend</span>
+            <span class="tag">SEO</span>
+            <span class="tag">Performance</span>
+          </div>
+        </div>
+      </article>
+    </div>
   </section>
 
-  <section id="corvinal">
-    <h2>Projetos Analíticos</h2>
-    <p>📚 Estudos e soluções inteligentes.</p>
+  <!-- Habilidades -->
+  <section id="habilidades">
+    <div class="section-title">
+      <h2>Habilidades e ferramentas</h2>
+      <hr class="divider" />
+    </div>
+
+    <div class="grid">
+      <div class="card reveal">
+        <h3>Design</h3>
+        <p style="color:#cbd5e1">Pesquisa, arquitetura de informação, wireframes e prototipagem de alta fidelidade.</p>
+        <div class="skills">
+          <span class="chip">Figma</span>
+          <span class="chip">Adobe XD</span>
+          <span class="chip">Illustrator</span>
+          <span class="chip">After Effects</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Frontend</h3>
+        <p style="color:#cbd5e1">Interfaces acessíveis, responsivas e performáticas com animações suaves.</p>
+        <div class="skills">
+          <span class="chip">HTML</span>
+          <span class="chip">CSS</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">React</span>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <h3>Estratégia</h3>
+        <p style="color:#cbd5e1">Definição de metas, métricas e validação contínua para evoluir produto.</p>
+        <div class="skills">
+          <span class="chip">UX Strategy</span>
+          <span class="chip">Analytics</span>
+          <span class="chip">A/B Testing</span>
+          <span class="chip">SEO</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="lufalufa">
-    <h2>Projetos Colaborativos</h2>
-    <p>🤝 Iniciativas sociais e em equipe.</p>
+  <!-- Sobre -->
+  <section id="sobre">
+    <div class="section-title">
+      <h2>Sobre a PEROLA</h2>
+      <hr class="divider" />
+    </div>
+
+    <div class="about">
+      <div class="card reveal">
+        <h3>Essência</h3>
+        <p style="color:#cbd5e1">
+          Acredito em design como ferramenta de clareza. Meu trabalho foca em transformar objetivos de negócio em
+          experiências simples, bonitas e funcionais.
+        </p>
+        <p style="color:#cbd5e1">
+          Atuo com equipes multidisciplinares, do discovery à entrega, conectando estética com impacto mensurável.
+        </p>
+      </div>
+
+      <div class="timeline reveal">
+        <div class="item" style="position:relative">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>2025 — Freelancer</h4>
+          <p>Projetos end-to-end para startups e PMEs.</p>
+        </div>
+        <div class="item" style="position:relative">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>2023–2024 — Produto digital</h4>
+          <p>UI/UX para plataformas B2B com foco em retenção.</p>
+        </div>
+        <div class="item" style="position:relative">
+          <span class="bullet" aria-hidden="true"></span>
+          <h4>Formação</h4>
+          <p>Design, front-end e motion. Cursos livres e projetos práticos.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="sonserina">
-    <h2>Projetos Estratégicos</h2>
-    <p>🐍 Projetos com visão e planejamento.</p>
-  </section>
-
+  <!-- Contato -->
   <section id="contato">
-    <h2>Coruja Mensageira</h2>
-    <form>
-      <label for="nome">Nome:</label><br>
-      <input type="text" id="nome" name="nome"><br><br>
-      <label for="mensagem">Mensagem:</label><br>
-      <textarea id="mensagem" name="mensagem"></textarea><br><br>
-      <button type="submit">Enviar pela Coruja</button>
-    </form>
+    <div class="section-title">
+      <h2>Vamos conversar</h2>
+      <hr class="divider" />
+    </div>
+
+    <div class="contact">
+      <form class="reveal" onsubmit="event.preventDefault(); toast('Mensagem enviada com sucesso!'); this.reset();">
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" type="text" placeholder="Seu nome" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="voce@exemplo.com" required />
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" placeholder="Me conte sobre seu projeto..." required></textarea>
+
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+          <button class="btn" type="submit">Enviar</button>
+          <span style="font-size:13px; color:#93a0b8">Resposta em até 24h úteis.</span>
+        </div>
+      </form>
+
+      <aside class="aside reveal">
+        <h3>Contato direto</h3>
+        <p style="color:#cbd5e1">Arapongas, Paraná — Brasil. Disponível para remoto e presencial conforme agenda.</p>
+        <div class="icons">
+          <a class="icon" href="mailto:contato@perola.dev" aria-label="Email">📧 Email</a>
+          <a class="icon" href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
+          <a class="icon" href="#" aria-label="Behance">🎨 Behance</a>
+          <a class="icon" href="#" aria-label="Instagram">📷 Instagram</a>
+          <a class="icon" href="#" aria-label="GitHub">💻 GitHub</a>
+        </div>
+      </aside>
+    </div>
   </section>
 
-  <div class="magic-cursor" id="cursor"></div>
+  <footer>
+    © 2025 PEROLA — Feito com cuidado, café e animação.
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" role="status" aria-live="polite" style="
+    position:fixed; left:50%; bottom:26px; transform:translateX(-50%) translateY(60px);
+    background:linear-gradient(135deg, rgba(34,211,238,.9), rgba(124,58,237,.9));
+    color:#061122; padding:10px 14px; border-radius:12px; box-shadow: var(--shadow);
+    border:1px solid rgba(255,255,255,.25); opacity:0; pointer-events:none;
+  "></div>
 
   <script>
-    const cursor = document.getElementById('cursor');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = e.pageX + 'px';
-      cursor.style.top = e.pageY + 'px';
+    // Digitação dinâmica no hero
+    const lines = [
+      "UI/UX • produto digital • motion",
+      "Experiências bonitas que resolvem problemas reais",
+      "Disponível para colaborações em 2025"
+    ];
+    const el = document.getElementById("typewriter");
+    let i = 0, j = 0, deleting = false;
+
+    function type() {
+      const current = lines[i];
+      if (!deleting) {
+        el.textContent = current.slice(0, j++);
+        if (j > current.length + 6) deleting = true;
+      } else {
+        el.textContent = current.slice(0, j--);
+        if (j === 0) { deleting = false; i = (i + 1) % lines.length }
+      }
+      const speed = deleting ? 40 : 60;
+      setTimeout(type, speed);
+    }
+    type();
+
+    // Revelação ao rolar
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Suave scroll nos links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+        }
+      });
     });
+
+    // Toast feedback
+    function toast(msg){
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.opacity = 1;
+      t.style.transform = 'translateX(-50%) translateY(0)';
+      setTimeout(() => {
+        t.style.opacity = 0;
+        t.style.transform = 'translateX(-50%) translateY(60px)';
+      }, 2400);
+    }
   </script>
 </body>
 </html>
