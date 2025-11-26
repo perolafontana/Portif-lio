@@ -3,54 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Pérola</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Portfólio Mágico</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Cinzel Decorative', serif;
+      background: #1a1a1a url('https://www.transparenttextures.com/patterns/aged-paper.png');
+      color: #f5f5dc;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(to bottom, #000, #2c2c2c);
+      color: gold;
+    }
+
+    header h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: #111;
+      padding: 15px;
+    }
+
+    nav a {
+      color: #f5f5dc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    section {
+      padding: 50px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .hogwarts-letter {
+      background: #fdf5e6;
+      border: 2px solid #8b0000;
+      padding: 30px;
+      font-family: 'Times New Roman', serif;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      transform: rotate(-1deg);
+    }
+
+    .magic-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: gold;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: sparkle 0.5s infinite alternate;
+    }
+
+    @keyframes sparkle {
+      from { transform: scale(0.8); opacity: 0.7; }
+      to { transform: scale(1.2); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
   <header>
-    <h1>Pérola Fontana Corchog</h1>
-    <p>Oioi, tudo bem? Sou a Pérola Fontana Corchog. Atualmente estou no 2° ano do Ensino Médio e sou aluna do Robinho (Robson Serpe) e estudo no Colégio Estadual Unidade Polo. Desde que conheci a programação me apaixonei. Me apaixonei pela ideia de poder criar absolutamente tudo que eu quisesse. Estou fazendo estágio em uma empresa, que se chama Use Sistemas, sendo uma desenvolvedora Front-End.</p>
+    <h1>Portfólio Interativo de PEROLA</h1>
+    <p>“Juro solenemente que não pretendo fazer nada de bom.”</p>
   </header>
 
-  <main>
-    <section id="trimestre1" class="trimestre">
-      <h2>1º Trimestre</h2>
-      <p>Projetos iniciais, aprendizados e primeiras experiências.</p>
-      <a href="projetoA.html" class="card">Projeto A</a>
-      <a href="projetoB.html" class="card">Projeto B</a>
-    </section>
+  <nav>
+    <a href="#grifinoria">Grifinória</a>
+    <a href="#corvinal">Corvinal</a>
+    <a href="#lufalufa">Lufa-Lufa</a>
+    <a href="#sonserina">Sonserina</a>
+    <a href="#contato">Coruja Mensageira</a>
+  </nav>
 
-    <section id="trimestre2" class="trimestre">
-      <h2>2º Trimestre</h2>
-      <p>Projetos intermediários e evolução das habilidades.</p>
-      <a href="https://perolafontana.github.io/Morango-do-Amor/index.html" class="card">Morango do Amor</a>
-      <a href="projetoD.html" class="card">Projeto D</a>
-    </section>
+  <section id="sobre">
+    <div class="hogwarts-letter">
+      <h2>Carta de Hogwarts</h2>
+      <p>Prezada PEROLA,<br><br>
+      Temos o prazer de informar que você foi aceita na Escola de Magia e Bruxaria de Hogwarts. 
+      Este portfólio mágico mostrará seus feitiços (projetos), poções (habilidades) e aventuras (experiências).<br><br>
+      Atenciosamente,<br>
+      Minerva McGonagall</p>
+    </div>
+  </section>
 
-    <section id="trimestre3" class="trimestre">
-      <h2>3º Trimestre</h2>
-      <p>Projetos avançados e conquistas finais.</p>
-      <a href="https://perolafontana.github.io/TransTudo-Transportadora/index.html" class="card">TransTudo-Transportadora</a>
-      <a href="https://perolafontana.github.io/Cafeteria/index.html" class="card">Cafeteria</a>
-      <a href="https://perolafontana.github.io/Lanchonete/index.html" class="card">Lanchonete</a>
-    </section>
+  <section id="grifinoria">
+    <h2>Projetos Criativos</h2>
+    <p>Aqui você pode listar seus trabalhos mais ousados e criativos.</p>
+  </section>
 
-    <!-- Seção de Projetos Autorais -->
-    <section id="autorais" class="autorais">
-      <h2>Projetos Autorais ✨</h2>
-      <p>Trabalhos criados por conta própria, explorando ideias e criatividade.</p>
-      <a href="https://perolafontana.github.io/Mario/index.html" class="card">It's me, Mario!</a>
-      <a href="https://perolafontana.github.io/Instagram/index.html" class="card">Instagram</a>
-      <a href="https://perolafontana.github.io/Projeto/index.html" class="card">Projeto - Use Sistemas</a>
-      <a href="https://perolafontana.github.io/UseCloud/index.html" class="card">UseCloudERP - Use Sistemas</a>
-      <a href="https://perolafontana.github.io/Space-Invaders/index.html" class="card">Space Invaders</a>
-    </section>
-  </main>
+  <section id="corvinal">
+    <h2>Projetos Analíticos</h2>
+    <p>Espaço para mostrar estudos, pesquisas e soluções inteligentes.</p>
+  </section>
 
-  <footer>
-    <p>Pérola Fontana Corchog - 2025 </p>
-  </footer>
+  <section id="lufalufa">
+    <h2>Projetos Colaborativos</h2>
+    <p>Trabalhos em equipe e iniciativas sociais.</p>
+  </section>
 
-  <script src="script.js"></script>
+  <section id="sonserina">
+    <h2>Projetos Estratégicos</h2>
+    <p>Projetos que demonstram visão e planejamento.</p>
+  </section>
+
+  <section id="contato">
+    <h2>Coruja Mensageira</h2>
+    <form>
+      <label for="nome">Nome:</label><br>
+      <input type="text" id="nome" name="nome"><br><br>
+      <label for="mensagem">Mensagem:</label><br>
+      <textarea id="mensagem" name="mensagem"></textarea><br><br>
+      <button type="submit">Enviar pela Coruja</button>
+    </form>
+  </section>
+
+  <div class="magic-cursor" id="cursor"></div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.pageX + 'px';
+      cursor.style.top = e.pageY + 'px';
+    });
+  </script>
 </body>
 </html>
