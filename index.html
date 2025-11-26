@@ -4,82 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfólio Mágico</title>
+  <!-- Fonte temática -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=MedievalSharp&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Cinzel Decorative', serif;
-      background: #1a1a1a url('https://www.transparenttextures.com/patterns/aged-paper.png');
+      font-family: 'MedievalSharp', cursive;
+      background: radial-gradient(circle at top, #0a0a0a, #1a1a1a 80%);
       color: #f5f5dc;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(to bottom, #000, #2c2c2c);
-      color: gold;
+      padding: 80px 20px;
+      background: url('https://i.ibb.co/4m7jz7z/hogwarts-night.jpg') center/cover no-repeat;
+      color: #ffd700;
+      text-shadow: 2px 2px 8px #000;
     }
 
     header h1 {
-      font-size: 3em;
-      text-shadow: 2px 2px 5px #000;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.5em;
+      margin: 0;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ffd700; }
+      to { text-shadow: 0 0 25px #ffae00; }
     }
 
     nav {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      background: #111;
-      padding: 15px;
+      gap: 30px;
+      background: rgba(0,0,0,0.8);
+      padding: 20px;
+      border-bottom: 2px solid #ffd700;
     }
 
     nav a {
-      color: #f5f5dc;
+      color: #ffd700;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      font-size: 1.2em;
+      transition: transform 0.3s, color 0.3s;
     }
 
     nav a:hover {
-      color: gold;
+      color: #fff;
+      transform: scale(1.2);
     }
 
     section {
-      padding: 50px;
-      max-width: 900px;
+      padding: 60px;
+      max-width: 1000px;
       margin: auto;
+      text-align: center;
+    }
+
+    section h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #ffd700;
+      margin-bottom: 20px;
+      font-size: 2.5em;
     }
 
     .hogwarts-letter {
       background: #fdf5e6;
-      border: 2px solid #8b0000;
-      padding: 30px;
+      border: 3px solid #8b0000;
+      padding: 40px;
       font-family: 'Times New Roman', serif;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
       transform: rotate(-1deg);
+      max-width: 700px;
+      margin: auto;
     }
 
+    button {
+      background: #8b0000;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #ffd700;
+      color: #000;
+    }
+
+    /* Cursor mágico */
     .magic-cursor {
       position: fixed;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
-      background: gold;
+      background: #ffd700;
       pointer-events: none;
       mix-blend-mode: screen;
-      animation: sparkle 0.5s infinite alternate;
+      animation: sparkle 0.6s infinite alternate;
     }
 
     @keyframes sparkle {
-      from { transform: scale(0.8); opacity: 0.7; }
-      to { transform: scale(1.2); opacity: 1; }
+      from { transform: scale(0.8); opacity: 0.6; }
+      to { transform: scale(1.3); opacity: 1; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Portfólio Interativo de PEROLA</h1>
-    <p>“Juro solenemente que não pretendo fazer nada de bom.”</p>
+    <h1>Portfólio Mágico de PEROLA</h1>
+    <p>✨ “Juro solenemente que não pretendo fazer nada de bom.” ✨</p>
   </header>
 
   <nav>
@@ -103,22 +142,22 @@
 
   <section id="grifinoria">
     <h2>Projetos Criativos</h2>
-    <p>Aqui você pode listar seus trabalhos mais ousados e criativos.</p>
+    <p>✨ Trabalhos ousados e cheios de coragem.</p>
   </section>
 
   <section id="corvinal">
     <h2>Projetos Analíticos</h2>
-    <p>Espaço para mostrar estudos, pesquisas e soluções inteligentes.</p>
+    <p>📚 Estudos e soluções inteligentes.</p>
   </section>
 
   <section id="lufalufa">
     <h2>Projetos Colaborativos</h2>
-    <p>Trabalhos em equipe e iniciativas sociais.</p>
+    <p>🤝 Iniciativas sociais e em equipe.</p>
   </section>
 
   <section id="sonserina">
     <h2>Projetos Estratégicos</h2>
-    <p>Projetos que demonstram visão e planejamento.</p>
+    <p>🐍 Projetos com visão e planejamento.</p>
   </section>
 
   <section id="contato">
